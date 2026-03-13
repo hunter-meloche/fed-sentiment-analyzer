@@ -21,6 +21,39 @@ It scrapes the latest monetary policy releases directly from the Federal Reserve
 5. Run the server: `python app.py`
 6. Open your browser and navigate to `http://localhost:8000`.
 
+## API Usage
+Fed Sentiment Analyzer provides a robust, real-time HTTP JSON API for external consumption. Since CORS is enabled globally, any web or backend application can fetch the data.
+
+**Endpoint:** `GET /api/analyze`
+**Parameters:**
+- `limit` (int, optional): The number of recent FOMC documents to analyze chronologically. Defaults to `5`.
+
+**Example Response:**
+```json
+{
+  "status": "success",
+  "urls": ["https://www.federalreserve.gov/..."],
+  "aggregate_score": 0.35,
+  "sentiment_counts": {
+    "Hawkish": 12,
+    "Dovish": 4,
+    "Neutral": 45
+  },
+  "total_sentences_analyzed": 61,
+  "highlights": [
+    {
+      "text": "The Committee decided to raise the federal funds rate...",
+      "sentiment": "Hawkish",
+      "confidence": 0.952,
+      "score": 0.952,
+      "url": "https://www.federalreserve.gov/...",
+      "date": "2023-07-26"
+    }
+  ]
+}
+```
+*Note: FastAPI automatically provides an interactive Swagger UI for testing the API at `http://localhost:8000/docs`.*
+
 ## Tech Stack
 - **Backend:** Python, FastAPI, Uvicorn
 - **NLP / ML:** HuggingFace Transformers, PyTorch, NLTK

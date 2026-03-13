@@ -10,6 +10,16 @@ from analyzer import FOMCAnalyzer
 
 app = FastAPI(title="FedSentiment API")
 
+from fastapi.middleware.cors import CORSMiddleware
+
+# Enable CORS for external API consumption
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
 # Initialize the analyzer model
 try:
     analyzer = FOMCAnalyzer()

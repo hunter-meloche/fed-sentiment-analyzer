@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FedSentiment - FOMC Analysis</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-glow"></div>
+    
+    <div class="container">
+        <header>
+            <h1>Fed<span class="highlight">Sentiment</span></h1>
+            <p>Real-time AI Analysis of FOMC Communications</p>
+        </header>
+
+        <main>
+            <div class="controls">
+                <div class="input-group">
+                    <label for="doc-limit">Documents to analyze:</label>
+                    <input type="number" id="doc-limit" min="1" value="5" class="limit-input">
+                </div>
+                <button id="analyze-btn" class="primary-btn">
+                    <span class="btn-text">Analyze Latest Statements</span>
+                    <div class="loader hidden"></div>
+                </button>
+            </div>
+
+            <div id="results-panel" class="results-panel hidden">
+                <div class="card dial-card">
+                    <h2>Sentiment Score</h2>
+                    <div class="dial-container">
+                        <!-- SVG Dial Graphic -->
+                        <svg viewBox="0 0 200 120" class="dial-svg">
+                            <!-- Background Track -->
+                            <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#2a2a35" stroke-width="20" stroke-linecap="round"/>
+                            
+                            <!-- Color Gradient Track -->
+                            <defs>
+                                <linearGradient id="dialGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#4ade80" /> <!-- Dovish/Green -->
+                                    <stop offset="50%" stop-color="#facc15" /> <!-- Neutral/Yellow -->
+                                    <stop offset="100%" stop-color="#f87171" /> <!-- Hawkish/Red -->
+                                </linearGradient>
+                            </defs>
+                            <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="url(#dialGradient)" stroke-width="20" stroke-linecap="round" opacity="0.3"/>
+                            
+                            <!-- The Needle -->
+                            <g id="needle" class="needle" transform="rotate(-90 100 100)">
+                                <polygon points="96 100, 104 100, 100 25" fill="#ffffff"/>
+                                <circle cx="100" cy="100" r="8" fill="#ffffff" />
+                            </g>
+                        </svg>
+                        
+                        <div class="dial-labels">
+                            <span class="dovish-label">Dovish</span>
+                            <span class="neutral-label">Neutral</span>
+                            <span class="hawkish-label">Hawkish</span>
+                        </div>
+                        
+                        <div class="score-value" id="score-display">0.00</div>
+                        <div class="sentiment-text" id="sentiment-category">Neutral</div>
+                    </div>
+                </div>
+
+                <div class="card stats-card">
+                    <h2>Analysis Summary</h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-label">Sentences Analyzed</div>
+                            <div class="stat-value" id="total-sentences">-</div>
+                        </div>
+                        <div class="stat-item dovish">
+                            <div class="stat-label">Dovish Phrases</div>
+                            <div class="stat-value" id="dovish-count">-</div>
+                        </div>
+                        <div class="stat-item neutral">
+                            <div class="stat-label">Neutral Phrases</div>
+                            <div class="stat-value" id="neutral-count">-</div>
+                        </div>
+                        <div class="stat-item hawkish">
+                            <div class="stat-label">Hawkish Phrases</div>
+                            <div class="stat-value" id="hawkish-count">-</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card highlights-card">
+                    <h2>Key Driven Sentences</h2>
+                    <ul id="highlights-list" class="highlights-list">
+                        <!-- Populated via JS -->
+                    </ul>
+                </div>
+                
+                <div class="source-link">
+                    <label for="url-dropdown">View Original Statements:</label>
+                    <div class="dropdown-group">
+                        <select id="url-dropdown" class="styled-select">
+                            <!-- Populated via JS -->
+                        </select>
+                        <button id="view-source-btn" class="secondary-btn">View</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="error-panel" class="error-panel hidden">
+                <p id="error-message">An error occurred while analyzing the statement.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

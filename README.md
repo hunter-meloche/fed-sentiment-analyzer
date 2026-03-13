@@ -1,8 +1,8 @@
 # Fed Sentiment Analyzer
 
-![Fed Sentiment Analyzer UI](image.png)
-
 Fed Sentiment Analyzer is a FastAPI-based web application that analyzes the sentiment of recent Federal Open Market Committee (FOMC) statements. 
+
+![Fed Sentiment Analyzer UI](image.png)
 
 It scrapes the latest monetary policy releases directly from the Federal Reserve website, processes the text into sentences, and runs them through a specialized financial NLP model ([`ProsusAI/finbert`](https://huggingface.co/ProsusAI/finbert)). It calculates a balanced Hawkish/Dovish score and highlights the most impactful statements, providing traders and analysts with an instant, bias-free read on Fed policy direction.
 

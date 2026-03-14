@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8102:8000"
+    restart: always
+    volumes:
+      # Cache HuggingFace model between rebuilds — FinBERT is ~400MB
+      - huggingface-cache:/root/.cache/huggingface
+
+volumes:
+  huggingface-cache:

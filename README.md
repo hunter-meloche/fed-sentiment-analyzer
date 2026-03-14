@@ -67,3 +67,5 @@ curl -X GET "http://localhost:8000/api/analyze?limit=5" -H "accept: application/
 
 ## Disclaimer
 **For Educational Purposes Only.** The information provided by FedSentiment does not constitute investment advice, financial advice, trading advice, or any other sort of advice. You should not treat any of the application's outputs as such. Do conduct your own due diligence and consult your financial advisor before making any investment decisions. The creators of this software are not responsible for any financial losses or damages incurred as a result of using this application.
+
+> **Disclaimer:** See [DISCLAIMER.md](./DISCLAIMER.md) for legal notices.

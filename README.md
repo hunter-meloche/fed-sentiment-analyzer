@@ -28,6 +28,11 @@ Fed Sentiment Analyzer provides a robust, real-time HTTP JSON API for external c
 **Parameters:**
 - `limit` (int, optional): The number of recent FOMC documents to analyze chronologically. Defaults to `5`.
 
+**Example Request:**
+```bash
+curl -X GET "http://localhost:8000/api/analyze?limit=5" -H "accept: application/json"
+```
+
 **Example Response:**
 ```json
 {

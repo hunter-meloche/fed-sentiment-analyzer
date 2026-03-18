@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const limit = Math.max(1, parseInt(docLimitInput.value) || 5);
-            const response = await fetch(`/api/analyze?limit=${limit}`);
+            const response = await fetch(`api/analyze?limit=${limit}`);
             const data = await response.json();
 
             if (data.status === 'success') {
